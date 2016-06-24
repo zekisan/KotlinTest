@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "624624930990",
+    "firebase_url": "https://kotlintest-99c0c.firebaseio.com",
+    "project_id": "kotlintest-99c0c",
+    "storage_bucket": "kotlintest-99c0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624624930990:android:64578ac6711a1645",
+        "android_client_info": {
+          "package_name": "com.example.ezequiel.kotlintest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624624930990-pirh6fimdt5dc8l2no7g4jtjrhi6dvhg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSRHP2L9J1Jd8UArDNmkMwkvuFB_q-9qI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
