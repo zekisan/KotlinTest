@@ -57,6 +57,7 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.google.firebase:firebase-database:9.0.2'
 }
 
 configurations.all {
@@ -73,5 +74,14 @@ configurations.compile.dependencies.each { compileDependency ->
 repositories {
     mavenCentral()
 }
-
+buildscript {
+    ext.kotlin_version = '1.0.2-1'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
 apply plugin: 'com.google.gms.google-services'
