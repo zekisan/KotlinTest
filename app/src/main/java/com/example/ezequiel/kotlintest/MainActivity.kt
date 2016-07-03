@@ -6,17 +6,12 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
-import com.google.firebase.database.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var toolbar: Toolbar
     lateinit var recyclerView: RecyclerView
-    var myRef: DatabaseReference = FirebaseDatabase.getInstance().reference
-    var conditionRef: DatabaseReference = myRef.child("name")
     lateinit var adapter: MyListAdapter
-    lateinit var namesList: List<String>
     lateinit var fab: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,10 +21,8 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        namesList = ArrayList()
-
         recyclerView = findViewById(R.id.recycler_view) as RecyclerView
-        adapter = MyListAdapter(namesList)
+
 
         fab = findViewById(R.id.fab) as FloatingActionButton
         fab.setOnClickListener({ startActivity(Intent(this, NewNameActivity::class.java)) })
@@ -37,16 +30,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        adapter = MyListAdapter(this)
+        recyclerView.adapter = adapter
+    }
 
-        conditionRef.addValueEventListener(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-                //throw UnsupportedOperationException()
-            }
+    override fun onStop() {
+        super.onStop()
 
-            override fun onDataChange(p0: DataSnapshot?) {
-                var t: GenericTypeIndicator<List<String>> = object : GenericTypeIndicator<List<String>>() {}
-                namesList = p0!!.getValue(t)
-            }
-        })
+        adapter.cleanupListener()
     }
 }
